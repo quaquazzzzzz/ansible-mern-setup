@@ -1,0 +1,24 @@
+---
+- name: Clone React application from Git
+  git:
+    repo: https://github.com/quaquazzzzzz/react_app.git
+    dest: /home/ubuntu/myapp
+    force: yes
+
+- name: Install PM2 with npm
+  npm:
+    name: pm2
+    global: yes
+  become: yes
+
+
+- name: Install application dependencies
+  command: npm install
+  args:
+    chdir: /home/ubuntu/myapp
+
+- name: Start application with PM2
+  command: pm2 start npm --name "myapp" -- start
+  args:
+    chdir: /home/ubuntu/myapp
+

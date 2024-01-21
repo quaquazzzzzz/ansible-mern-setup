@@ -1,0 +1,7 @@
+- name: Install Node.js and npm
+  apt:
+    pkg:
+      - nodejs
+      - npm
+    update_cache: yes
+

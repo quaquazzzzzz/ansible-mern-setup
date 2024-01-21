@@ -1,0 +1,12 @@
+[all:vars]
+ansible_user=ubuntu
+
+[backend]
+18.185.184.232
+
+[frontend]
+18.185.184.232
+
+[database]
+18.185.184.232
+

@@ -1,0 +1,22 @@
+---
+- name: Install MongoDB
+  apt:
+    name: mongodb
+    state: present
+    update_cache: yes
+  become: yes  # Führt den Task als Superuser aus
+
+- name: Ensure MongoDB is running
+  service:
+    name: mongodb
+    state: started
+    enabled: yes
+  become: yes  # Führt den Task als Superuser aus
+
+- name: Configure MongoDB
+  # Füge hier spezifische Konfigurationen ein, z.B.:
+  lineinfile:
+    path: /etc/mongodb.conf
+    line: 'bindIp: 127.0.0.1'
+  become: yes  # Führt den Task als Superuser aus
+
